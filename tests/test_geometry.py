@@ -7,6 +7,9 @@ from unittest import TestCase
 
 from vector_primitives.geometry import Polygon2, Vector2, Vector3, Vector4
 
+# Vector components round-trip through float32-style storage; 7 decimal places is too strict.
+_VPLACES = 5
+
 class TestVector2(TestCase):
     def test_unpacking(self):
         source = Vector2(1.2, 2.3)
