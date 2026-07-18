@@ -1083,7 +1083,7 @@ class Vector4(vec4):
     ) -> Self:
         """Decompress a packed quaternion from a 32-bit integer.
 
-        KotOR uses compressed quaternions for orientation controllers to save space.
+        Some game formats use compressed quaternions for orientation controllers to save space.
         The compression packs X, Y, Z components into 11, 11, and 10 bits respectively,
         with W calculated from the constraint that |q| = 1.
 
@@ -1357,7 +1357,7 @@ class AxisAngle:
         return self.__class__(self.axis.copy(), self.angle)
 
 
-# SurfaceMaterial / Face (KotOR walkmesh) intentionally omitted from standalone extract.
+# Walkmesh face/material types intentionally omitted.
 
 
 class Polygon2:

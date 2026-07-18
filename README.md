@@ -1,28 +1,19 @@
 # vector-primitives
 
-`Vector2/3/4`, `Matrix4`, `AxisAngle`, `Polygon2/3` geometry helpers.
+`Vector2` / `Vector3` / `Vector4`, `Matrix4`, `AxisAngle`, `Polygon2` / `Polygon3`.
 
-KotOR-specific `SurfaceMaterial` / `Face` walkmesh types are **not** included.
+Optional GLM backends if you install `pyglm` (or `glm`). Without that you get the pure-Python path.
 
-Optional: install `pyglm` or `glm` for GLM-backed bases.
-
-## Name note
-
-GitHub repo remains `python-vectors`. The **PyPI distribution name** is `vector-primitives` because [`python-vectors`](https://pypi.org/project/python-vectors/) is already taken (unrelated 2D/3D point library by Foster Reichert).
-
-Import as `vector_primitives`.
-
-## Install
+GitHub repo is still named `python-vectors`. The distribution name on PyPI (when published) is **`vector-primitives`** because `python-vectors` was already taken by someone else.
 
 ```bash
-pip install -e .
-# or eventually: pip install vector-primitives
-pip install pyglm  # optional
+pip install git+https://github.com/oldrepublicwizard/python-vectors.git
+# later: pip install vector-primitives
 ```
 
-## Origin
-
-Sliced from PyKotor `utility/common/geometry.py`.
+```python
+from vector_primitives import Vector3
+```
 
 ## License
 
