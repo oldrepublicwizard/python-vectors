@@ -23,7 +23,7 @@ if PYKOTOR_PATH.joinpath("pykotor").exists():
 if UTILITY_PATH.joinpath("utility").exists():
     add_sys_path(UTILITY_PATH)
 
-from python_vectors.geometry import Face, Polygon2, Vector2, Vector3, Vector4  # noqa: E402
+from vector_primitives.geometry import Face, Polygon2, Vector2, Vector3, Vector4  # noqa: E402
 
 # Vector components round-trip through float32-style storage; 7 decimal places is too strict.
 _VPLACES = 5

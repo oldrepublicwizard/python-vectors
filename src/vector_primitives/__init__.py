@@ -1,5 +1,5 @@
 """Vector / matrix / polygon geometry (optional pyglm/glm)."""
-from python_vectors.geometry import (
+from vector_primitives.geometry import (
     AxisAngle,
     Matrix4,
     Polygon2,
