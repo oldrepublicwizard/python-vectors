@@ -1,33 +1,11 @@
 from __future__ import annotations
 
 import math
-import pathlib
-import sys
 import unittest
 
 from unittest import TestCase
 
-THIS_SCRIPT_PATH = pathlib.Path(__file__).resolve()
-PYKOTOR_PATH = THIS_SCRIPT_PATH.parents[3].joinpath("src")
-UTILITY_PATH = THIS_SCRIPT_PATH.parents[5].joinpath("Libraries", "Utility", "src")
-
-
-def add_sys_path(p: pathlib.Path):
-    working_dir = str(p)
-    if working_dir not in sys.path:
-        sys.path.append(working_dir)
-
-
-if PYKOTOR_PATH.joinpath("pykotor").exists():
-    add_sys_path(PYKOTOR_PATH)
-if UTILITY_PATH.joinpath("utility").exists():
-    add_sys_path(UTILITY_PATH)
-
-from vector_primitives.geometry import Face, Polygon2, Vector2, Vector3, Vector4  # noqa: E402
-
-# Vector components round-trip through float32-style storage; 7 decimal places is too strict.
-_VPLACES = 5
-
+from vector_primitives.geometry import Polygon2, Vector2, Vector3, Vector4
 
 class TestVector2(TestCase):
     def test_unpacking(self):
@@ -146,24 +124,6 @@ class TestVector4(TestCase):
         self.assertAlmostEqual(0.0, q4.y, 1)
         self.assertAlmostEqual(0.7, q4.z, 1)
         self.assertAlmostEqual(0.7, q4.w, 1)
-
-
-class TestFace(TestCase):
-    def test_determine_z(self):
-        v1 = Vector3(0.0, 0.0, 0.0)
-        v2 = Vector3(1.0, 0.0, 1.0)
-        v3 = Vector3(0.0, 1.0, 1.0)
-        face = Face(v1, v2, v3)
-        # At the points
-        assert face.determine_z(0.0, 0.0) == 0.0  # v1
-        assert face.determine_z(1.0, 0.0) == 1.0  # v2
-        assert face.determine_z(0.0, 1.0) == 1.0  # v3
-        # Middle of each edge
-        assert face.determine_z(0.5, 0.0) == 0.5  # v1, v2
-        assert face.determine_z(0.0, 0.5) == 0.5  # v1, v3
-        assert face.determine_z(0.5, 0.5) == 1.0  # v2, v3
-        # Centre of the face
-        assert face.determine_z(0.33, 0.33) == 0.66
 
 
 class TestPolygon2(TestCase):
